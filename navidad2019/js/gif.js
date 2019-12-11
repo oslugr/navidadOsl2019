@@ -1,15 +1,4 @@
-  /*var urls = [
-    'img/2020-alcohol-anniversary-3036525.jpg',
-    'img/pexels-photo-1050244.jpeg'
-    'img/frame3.png',
-    'img/frame4.png',
-    'img/frame5.png',
-    'img/frame6.png',
-    'img/frame7.png',
-    'img/frame8.png',
-    'img/frame9.png',
-    'img/frame10.png'
-  ];*/
+//Precarga de imagenes
   var papaNoel = [
     '/navidad2019/img/papaNoel/papanoel1.png',
     '/navidad2019/img/papaNoel/papanoel2.png',
@@ -25,8 +14,7 @@
     '/navidad2019/img/navidadMovimiento/navidadMovimiento6.png',
     '/navidad2019/img/navidadMovimiento/navidadMovimiento7.png',
     '/navidad2019/img/navidadMovimiento/navidadMovimiento8.png',
-    '/navidad2019/img/navidadMovimiento/navidadMovimiento9.png'//,
-    //'img/navidadMovimiento/navidadMovimiento10.png',
+    '/navidad2019/img/navidadMovimiento/navidadMovimiento9.png'
   ];
   var arbolito = [
     '/navidad2019/img/patinar/patinar1.png',
@@ -54,15 +42,8 @@
       ctx.fillRect(0, 0, w, h);
       // Copy image element onto canvas
       ctx.drawImage(this, 0, 0, w, h);
-      
-      //text on canvas-> fill text(text, "x", "y")
-      //ctx.font = "50px sans-serif"; //ctx.font = "30px Arial";//tamanio y tipo letra
-      //ctx.fillStyle = "green";//color
-      //ctx.fillStyle = "#ff0000";
-      //ctx.textAlign = "center";
-
-      //funcion separar texto
-     // separarTexto(text[0],text[1]);
+            
+      //funcion separar texto y aniadir texto a las postales(imagen a imagen)
       //ponerTexto(texto, firma, posicion de textoX, textoY, poiscion firmaX, firmaY)
      
      switch(gifEscogido){
@@ -75,10 +56,7 @@
         case "3":
             ponerTexto(text[0], text[1], 745, 180, 745, 470);
         break;
-      }
-      
-      //ctx.fillText(text[0], 90, 50);//msj 1 50? Os deseamos unas felices fiestas y un prospero año
-     // ctx.fillText(text[1], 200, 300);//msj 2 25? Oficina de Software Libre
+      }     
       
       // Add animation frame
       encoder.addFrame(ctx);
@@ -113,29 +91,8 @@
       // Don't forget to revoke object url after load
       URL.revokeObjectURL(url);
     }
-    //encoder.finish();
-    //encoder.download("download.gif");
-  };
-/*
-  window.onload = function() {
-    canvas = document.getElementById('canvas');
-    ctx = canvas.getContext('2d');
-    encoder = new GIFEncoder();
-    encoder.setRepeat(0);
-    encoder.setDelay(1000);
-    encoder.setSize(w, h);
-    canvas.width = w;
-    canvas.height = h;
-    encoder.start();
-    addFrame(0, addFrame);
     
-  }
-*/
-
-window.onload = function() {
-  var dir = "img/";
-  
-}
+  };
 
 function genGif() {
     canvas = document.getElementById('canvas');
@@ -150,8 +107,9 @@ function genGif() {
     addFrame(0, addFrame);
 }
 
+//funcion de accion para descargar la postal
 function descargaGif() {
-    //encoder.finish();
+    
     encoder.download("NavidadOSL2019.gif");
 }
 
@@ -169,7 +127,7 @@ function ponerTexto(texto, firma, textoX, textoY, firmaX, firmaY){
   separameTexto.forEach(element => {
     //console.log(element.length);
     tamTemp += element.length;
-    console.log(tamTemp*33+textoX, " palabras", element,separameTexto[separameTexto.length -1]);
+    //console.log(tamTemp*33+textoX, " palabras", element,separameTexto[separameTexto.length -1]);
     if((tamTemp*33 + posIniX + (textoTemp.length -1)) < (w)){ //numero de caracteres(sin espacio)*pixeltaml + posicionInicial + espacios
         textoTemp.push(element.toString());//llenar texto temporal
         // console.log("array temp", textoTemp);
@@ -180,7 +138,7 @@ function ponerTexto(texto, firma, textoX, textoY, firmaX, firmaY){
         }
     }
     else{
-      console.log("array temp", textoTemp);
+      //console.log("array temp", textoTemp);
       //ctx.textAlign = "left";
       ctx.fillText(textoTemp.toString().replace(/,/g, ' '), posIniX, posIniY); //poner texto temporal
       //resetear y modificar valores
@@ -197,7 +155,7 @@ function ponerTexto(texto, firma, textoX, textoY, firmaX, firmaY){
       
       //condicion adicional última palabra
       if(element.toString() == separameTexto[separameTexto.length -1].toString()){
-        console.log("ultima palabra");
+        //console.log("ultima palabra");
         ctx.fillText(element.toString(), posIniX, posIniY); //poner texto temporal
       }
     }
@@ -205,7 +163,7 @@ function ponerTexto(texto, firma, textoX, textoY, firmaX, firmaY){
 
   //config text2 canvas 
   //separar texto 
-  console.log("fiiiirmaaaa",firma);
+  //console.log("fiiiirmaaaa",firma);
   separameTexto = firma.split(" ");
   //actualizar variables
   textoTemp = [];
@@ -219,7 +177,7 @@ function ponerTexto(texto, firma, textoX, textoY, firmaX, firmaY){
   separameTexto.forEach(element => {
     //console.log(element.length);
     tamTemp += element.length;
-    console.log(tamTemp);
+    //console.log(tamTemp);
     if((tamTemp*33 + posIniX + (textoTemp.length -1)) < (w)){ //numero de caracteres(sin espacio)*pixeltaml + posicionInicial + espacios
         textoTemp.push(element.toString());//llenar texto temporal
         // console.log("array temp", textoTemp);
@@ -230,7 +188,7 @@ function ponerTexto(texto, firma, textoX, textoY, firmaX, firmaY){
         }
     }
     else{
-      console.log("array temp", textoTemp);
+      //console.log("array temp", textoTemp);
       //ctx.textAlign = "left";
       ctx.fillText(textoTemp.toString().replace(/,/g, ' '), posIniX, posIniY); //poner texto temporal
       //resetear y modificar valores
@@ -253,156 +211,6 @@ function ponerTexto(texto, firma, textoX, textoY, firmaX, firmaY){
     }
   });//fin bucle palabras firma  
 }
-
-function separarTexto(texto, texto2){ 
-  var tempText = [];
-  tempText = texto.split(" ");
- // console.log("mis texto", tempText.length);
- // console.log(tempText.slice(0,4));
-//  var x = tempText.slice(0,4);
- // console.log(x.toString().replace(/,/g, ' '));
-  /*ctx.fillText(x.toString().replace(/,/g, ' '), 90, 50);
-  x = tempText.slice(4,tempText.length);
-  ctx.fillText(x.toString().replace(/,/g, ' '), 130, 90);*/
-  localizacionTexto(gifEscogido,tempText, texto2)
-
-}
-
-
-//   Os deseamos unas felices fiestas y un prospero año                Oficina de Software Libre
-//   Oficina de Software Libre
-function localizacionTexto(opcion,texto, texto2){
-  switch (opcion) {
-    case "1":
-      /*let partir;
-      //config text1 canvas 
-      ctx.font = "60px ChristmasSparkle_PERSONAL";
-      ctx.fillStyle = "#ff0000";
-      partir = texto.slice(0,3);
-      // console.log(x.toString().replace(/,/g, ' '));
-      ctx.fillText(partir.toString().replace(/,/g, ' '), 190, 100);
-      partir = texto.slice(4,6);
-      ctx.fillText(partir.toString().replace(/,/g, ' '), 215, 160);
-      partir = texto.slice(6,texto.length);
-      ctx.fillText(partir.toString().replace(/,/g, ' '), 235, 210);
-      */
-      
-      //console.log(texto);
-      //config text1 canvas
-      ctx.textBaseline = "bottom";
-      ctx.font = "normal normal 50px dejavu serif";//normal normal 20px Verdana //normal normal 55px ChristmasSparkle_PERSONAL
-      ctx.fillStyle = "#732424";
-      //w=720 h=1280
-      var tamTemp = 0, posIniX = 145, posIniY = 340, textoTemp = [];
-      
-      texto.forEach(element => {
-        //console.log(element.length);
-        tamTemp += element.length;
-        console.log(tamTemp);
-        if((tamTemp*33 + posIniX + (textoTemp.length -1)) < (w-20)){ //numero de caracteres(sin espacio)*pixeltaml + posicionInicial + espacios
-            textoTemp.push(element.toString());//llenar texto temporal
-           // console.log("array temp", textoTemp);
-           if(element.toString() == texto[texto.length -1].toString()){
-            ctx.fillText(textoTemp.toString().replace(/,/g, ' '), posIniX, posIniY);
-           }
-        }
-        else{
-          console.log("array temp", textoTemp);
-          //ctx.textAlign = "left";
-          ctx.fillText(textoTemp.toString().replace(/,/g, ' '), posIniX, posIniY); //poner texto temporal
-          //resetear y modificar valores
-          textoTemp = []; //vaciar textotemporal
-          textoTemp.push(element.toString());//llenar texto temporal con la palabra saltada
-          posIniX += 40;
-          posIniY += 60;
-          tamTemp = element.length;
-          
-          //condicion adicional última palabra
-          if(element.toString() == texto[texto.length -1].toString()){
-            //console.log("ultima palabra");
-            ctx.fillText(element.toString(), posIniX, posIniY); //poner texto temporal
-          }
-        }
-      });
-
-      //config text2 canvas 
-      ctx.font = "normal normal 40px dejavu serif";
-      //ctx.fillStyle = "green";
-      ctx.fillText(texto2, 180, 550);
-    break;
-
-    case "2":
-      /*let partir2 ;
-      //config text1 canvas 
-      ctx.font = "60px ChristmasSparkle_PERSONAL";
-      ctx.fillStyle = "#ff0000";
-      partir2 = texto.slice(0,4);
-      // console.log(x.toString().replace(/,/g, ' '));
-      ctx.fillText(partir2.toString().replace(/,/g, ' '), 150, 100);
-      partir2 = texto.slice(4,6);
-      ctx.fillText(partir2.toString().replace(/,/g, ' '), 175, 160);
-      partir2 = texto.slice(6,texto.length);
-      ctx.fillText(partir2.toString().replace(/,/g, ' '), 150, 210);
-      //config text2 canvas 
-      ctx.font = "55px ChristmasSparkle_PERSONAL";
-      ctx.fillStyle = "green";
-      ctx.fillText(texto2, 160, 270);*/
-      //config text1 canvas
-      ctx.textBaseline = "bottom";
-      ctx.font = "normal normal 40px Verdana";//normal normal 20px Verdana //normal normal 55px ChristmasSparkle_PERSONAL
-      ctx.fillStyle = "#732424";
-      //w=720 h=1280
-      var tamTemp = 0, posIniX = 150, posIniY = 100, textoTemp = [];
-      
-      texto.forEach(element => {
-        //console.log(element.length);
-        tamTemp += element.length;
-        console.log(tamTemp);
-        if((tamTemp*25 + posIniX + (textoTemp.length -1)) < (850)){ //numero de caracteres(sin espacio)*pixeltaml + posicionInicial + espacios
-            textoTemp.push(element.toString());//llenar texto temporal
-           // console.log("array temp", textoTemp);
-           if(element.toString() == texto[texto.length -1].toString()){
-            ctx.fillText(textoTemp.toString().replace(/,/g, ' '), posIniX, posIniY);
-           }
-        }
-        else{
-          console.log("array temp", textoTemp);
-          //ctx.textAlign = "left";
-          ctx.fillText(textoTemp.toString().replace(/,/g, ' '), posIniX, posIniY); //poner texto temporal
-          //resetear y modificar valores
-          textoTemp = []; //vaciar textotemporal
-          textoTemp.push(element.toString());//llenar texto temporal con la palabra saltada
-          posIniX += 50;
-          posIniY += 60;
-          tamTemp = element.length;
-          
-          //condicion adicional última palabra
-          if(element.toString() == texto[texto.length -1].toString()){
-            //console.log("ultima palabra");
-            ctx.fillText(element.toString(), posIniX, posIniY); //poner texto temporal
-          }
-        }
-      });
-
-      //config text2 canvas 
-      ctx.font = "normal normal 40px Verdana";
-     // ctx.fillStyle = "green";
-      ctx.fillText(texto2, 160, 270);
-
-    break;
-
-    case "3":
-      var x = texto.slice(0,4);
-      // console.log(x.toString().replace(/,/g, ' '));
-      ctx.fillText(x.toString().replace(/,/g, ' '), 90, 50);
-      x = texto.slice(4,texto.length);
-      ctx.fillText(x.toString().replace(/,/g, ' '), 130, 90);
-    break;
-
-
-  }
-}
-
 
 function asignarGif(opcion){
     //console.log("opcion", opcion);
@@ -428,23 +236,12 @@ function asignarGif(opcion){
 $(document).ready(function(){
   $("select").imagepicker({
     limit_reached: function(){alert('Postal ya escogida, si quiere escoger otra distinta deseleccione primero');}
-    });
-
-  $("#reiniciar").click(function(){
-    //console.log($("select").data('picker').selected_values());
-    //$("ul").find("div").removeClass("selected").addClass("thumbnail");
-    //$("select").data('picker'); 
-    
-   // urls = $("select").data('picker').selected_values();
-    //genGif();
-    
-  }); 
+    }); 
 
   $("#createGif").click(function(){
-     //    urls = $("select").data('picker').selected_values();
 
      let gif = $("select").data('picker').selected_values();
-     console.log(gif);
+     //console.log(gif);
      gifEscogido = gif[0].replace(/\D/g, '');
      asignarGif(gifEscogido );
    
@@ -453,33 +250,25 @@ $(document).ready(function(){
       text[0] = $("#textoNombre").val();
      if($("#dedicatoria").val() != "")
       text[1] = $("#dedicatoria").val();
-     //console.log("texto?: " + text[0] + " y "+ text[1]+ "tam?"+ text.length);
+   // console.log("texto?: " + text[0] + " y "+ text[1]);
      //console.log($("select").data('picker').selected_values(), urls.length);
      
-     if(urls.length <= 0 || text.length <= 0){
+     if(urls.length <= 0 || text[0] == undefined || text[1] == undefined){
        if(urls.length <= 0)
         alert("Debes seleccionar imagenes para tu gif en el paso 1");
-       if(text[0].length <= 0)
-         alert("Debes seleccionar poner texto en el paso 2");
-       
+       if(text[0] == undefined){
+         alert("Debes seleccionar poner texto en la dedicatoria");
+	 text[1] = undefined;
+       }if(text[1] == undefined){
+         alert("Debes seleccionar poner texto en la firma");
+	 text[0] = undefined;
+       }
+	
+		
      }else{
        genGif();
        
-       //$("#previsualizador").removeClass("hidden");
      }
-     //console.log($("select").data('picker').selected_values(), urls.length);
   });
-    
-    
-  
-  
-    /*$("#previsualizador").on('load',function () {
-      $('#canvas').fadeIn(500);
-      $('#canvas').fadeOut(500);
-    });
-    */
-    
-    /*$('ul.image_picker_selector li:first').remove(".image_picker_image");
-    console.log("hola",$('ul.image_picker_selector li:first').remove(".image_picker_image"));
-    */
-  });
+   
+});
