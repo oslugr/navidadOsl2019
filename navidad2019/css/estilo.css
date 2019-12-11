@@ -1,0 +1,54 @@
+header{
+    padding: 50px;
+}
+@font-face {
+    font-family: 'ChristmasSparkle_PERSONAL';
+    src: url("/font/christmas_sparkle/ChristmasSparkle_PERSONAL.ttf");
+    
+  }
+/*.luces {
+    background-image: url(https://lh6.googleusercontent.com/-0-h4Co-Y-nI/TuuwZct5hrI/AAAAAAAAB-g/RKjXYFZwlHY/s500/luces%25252012.gif);
+    background-repeat:repeat-x;
+    height:47px;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    }*/
+    
+figure {
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    float: left;
+    }
+
+img {
+    height: auto; 
+    width: auto; 
+    max-width: 380px; 
+    max-height: 220px;
+}
+
+canvas {
+    transition: width .5s, height .5s, top .5s, left .5s;
+}
+
+html {
+        min-height: 100%;
+        position: center;
+}
+
+body {
+    margin-left: 40px;
+    margin-bottom: 500px;
+}
+
+footer {
+    background-color: black;
+    position: fixed ;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    color: white;
+}
