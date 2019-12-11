@@ -29,3 +29,5 @@ Felices Fiestas a toda la comunidad!
 
 ### Aportes externos
 - [imagepicker](https://github.com/rvera/image-picker)
+- [pexels](https://www.pexels.com/) 
+    se ha dejado las imagenes utilizadas en el directorio  /navidad2019/imagenesPexel
