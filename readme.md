@@ -1,5 +1,4 @@
 # Navidad OSl 2019
-# Creador de gif
 
 ¡Felices Fiestas a toda la comunidad!
 Y para que podáis felicitar las fiestas, os proponemos utilizar esta pequeña aplicación que hemos desarrollado desde la Oficina y que podéis usar con vuestras amistades y familias.
